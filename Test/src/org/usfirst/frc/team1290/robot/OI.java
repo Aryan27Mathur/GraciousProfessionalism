@@ -3,6 +3,7 @@ package org.usfirst.frc.team1290.robot;
 import org.usfirst.frc.team1290.robot.commands.DropCommand;
 import org.usfirst.frc.team1290.robot.commands.LiftCommand;
 import org.usfirst.frc.team1290.robot.commands.ReleaseBox;
+import org.usfirst.frc.team1290.robot.commands.ToggleControlMode;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -22,7 +23,7 @@ public class OI
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber);
 	
-	public static int controlMode = 0;
+	public static boolean controlMode = true;
 	
 	static Joystick	joystick	= new Joystick(RobotMap.joystick);
 
@@ -58,10 +59,12 @@ public class OI
 		// button.whenReleased(new ExampleCommand());
 		//		buttonA.toggleWhenPressed(new AcquireBox());
 		buttonB.toggleWhenPressed(new ReleaseBox());
+		buttonX.whenPressed(new ToggleControlMode());
 		buttonY.whenPressed(new LiftCommand(Robot.getInstance().getElevator()));
 		buttonA.whenPressed(new DropCommand(Robot.getInstance().getElevator()));
 		buttonL.whenPressed(new LiftCommand(Robot.getInstance().getLegs()));
 		buttonR.whenPressed(new DropCommand(Robot.getInstance().getLegs()));
+
 
 	}
 

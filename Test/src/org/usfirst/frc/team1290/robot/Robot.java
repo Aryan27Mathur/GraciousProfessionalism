@@ -197,8 +197,16 @@ public class Robot extends TimedRobot
 	@Override
 	public void teleopPeriodic()
 	{
-		m_drivetrain.setSpeedLeft(m_oi.getLeft());
-		m_drivetrain.setSpeedRight(m_oi.getRight());
+		if(OI.controlMode)
+		{
+			m_drivetrain.setSpeedLeft(m_oi.getLeft());
+			m_drivetrain.setSpeedRight(m_oi.getRight());
+		}
+		else
+		{
+			m_elevator.setElevatorPos(m_oi.getLeft());
+		}
+
 		Scheduler.getInstance().run();
 	}
 

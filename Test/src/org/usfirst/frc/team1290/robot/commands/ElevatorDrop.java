@@ -9,8 +9,6 @@ public class ElevatorDrop extends Command
 
 	protected void initialize()
 	{
-		/* choose the sensor and sensor direction */
-
 	}
 
 	protected void execute()
@@ -21,7 +19,11 @@ public class ElevatorDrop extends Command
 	protected boolean isFinished()
 	{
 		// TODO: Make this return true when this Command no longer needs to run execute() 
-		return true;
+		if(Robot.getInstance().getElevator().isAtBottom())
+		{
+			Robot.getInstance().getElevator().stopMoving();
+		}
+		return Robot.getInstance().getElevator().isAtBottom();
 	}
 
 	protected void end()
